@@ -30,9 +30,10 @@ public class StringTest {
         String[] splitResult = splitCandidate.split(",");
 
         // then
-        assertThat(splitResult).contains("1");
-        assertThat(splitResult).contains("2");
-        assertThat(splitResult).containsExactly("1", "2");
+        assertThat(splitResult)
+                .contains("1")
+                .contains("2")
+                .containsExactly("1", "2");
     }
 
     @DisplayName("요구사항1 - 1 split")
@@ -45,8 +46,9 @@ public class StringTest {
         String[] splitResult = splitCandidate.split(",");
 
         // then
-        assertThat(splitResult).contains("1");
-        assertThat(splitResult).containsExactly("1");
+        assertThat(splitResult)
+                .contains("1")
+                .containsExactly("1");
     }
 
     /**
