@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class CalculatorTest {
 
@@ -75,5 +76,60 @@ public class CalculatorTest {
 
         // then
         assertThat(result).isEqualTo(expected);
+    }
+
+    @DisplayName("[실패] 입력에 수식이 없는 경우 예외 검증 - 아예 수식이 없는 경우")
+    @Test
+    void failure_without_expression_1() {
+        // given
+        String mathExpression = "4 2";
+
+        // when / then
+        assertThatThrownBy(() -> Disassembler.calculate(mathExpression))
+                .isInstanceOf(IllegalStateException.class);
+    }
+
+    @DisplayName("[실패] 입력에 수식이 없는 경우 예외 검증 - 중간에 없는 경우")
+    @Test
+    void failure_without_expression_2() {
+        // given
+        String mathExpression = "4 - 2 3";
+
+        // when / then
+        assertThatThrownBy(() -> Disassembler.calculate(mathExpression))
+                .isInstanceOf(IllegalStateException.class);
+    }
+
+    @DisplayName("[실패] 수식이 여러번 나온 경우")
+    @Test
+    void failure_without_expression_3() {
+        // given
+        String mathExpression = "4 - /";
+
+        // when / then
+        assertThatThrownBy(() -> Disassembler.calculate(mathExpression))
+                .isInstanceOf(IllegalStateException.class);
+    }
+
+    @DisplayName("[실패] 입력값에 숫자로 시작하지 않는 경우 - 처음부터 숫자가 누락된 경우")
+    @Test
+    void failure_without_number_1() {
+        // given
+        String mathExpression = "- 2";
+
+        // when / then
+        assertThatThrownBy(() -> Disassembler.calculate(mathExpression))
+                .isInstanceOf(IllegalStateException.class);
+    }
+
+    @DisplayName("[실패] 중간에 숫자가 누락된 경우")
+    @Test
+    void failure_without_number_2() {
+        // given
+        String mathExpression = "2 -";
+
+        // when / then
+        assertThatThrownBy(() -> Disassembler.calculate(mathExpression))
+                .isInstanceOf(IllegalStateException.class);
     }
 }
