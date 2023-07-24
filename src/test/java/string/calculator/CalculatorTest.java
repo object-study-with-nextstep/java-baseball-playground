@@ -10,39 +10,70 @@ public class CalculatorTest {
     @DisplayName("[성공] 기본 케이스 : 2 + 3 * 4 / 2 = 10")
     @Test
     void success_complex_formula() {
-        int result = Disassembler.calculate("2 + 3 * 4 / 2");
+        // given
+        String mathExpression = "2 + 3 * 4 / 2";
+        int expected = 10;
 
-        assertThat(result).isEqualTo(10);
+        // when
+        int result = Disassembler.calculate(mathExpression);
+
+        // then
+        assertThat(result).isEqualTo(expected);
     }
+
     @DisplayName("[성공] 두 숫자의 더하는 수식을 입력받아 결과를 반환한다.")
     @Test
     void success_add() {
-        int result = Disassembler.calculate("2 + 3");
+        // given
+        String mathExpression = "2 + 3";
+        int expected = 5;
 
-        assertThat(result).isEqualTo(5);
+        // when
+        int result = Disassembler.calculate(mathExpression);
+
+        // then
+        assertThat(result).isEqualTo(expected);
     }
 
     @DisplayName("[성공] 두 숫자의 빼기 수식을 입력받아 결과를 반환한다.")
     @Test
     void success_subtract() {
-        int result = Disassembler.calculate("2 - 3");
+        // given
+        String mathExpression = "2 - 3";
+        int expected = -1;
 
-        assertThat(result).isEqualTo(-1);
+        // when
+        int result = Disassembler.calculate(mathExpression);
+
+        // then
+        assertThat(result).isEqualTo(expected);
     }
 
     @DisplayName("[성공] 두 숫자를 곱하는 수식을 입력받아 결과를 반환한다.")
     @Test
     void success_multiply() {
-        int result = Disassembler.calculate("2 * 3");
+        // given
+        String mathExpression = "2 * 3";
+        int expected = 6;
 
-        assertThat(result).isEqualTo(6);
+        // when
+        int result = Disassembler.calculate(mathExpression);
+
+        // then
+        assertThat(result).isEqualTo(expected);
     }
 
     @DisplayName("[성공] 두 숫자를 나누는 수식을 입력받아 결과를 반환한다.")
     @Test
     void success_divide() {
-        int result = Disassembler.calculate("4 / 2");
+        // given
+        String mathExpression = "4 / 2";
+        int expected = 2;
 
-        assertThat(result).isEqualTo(2);
+        // when
+        int result = Disassembler.calculate(mathExpression);
+
+        // then
+        assertThat(result).isEqualTo(expected);
     }
 }
