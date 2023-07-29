@@ -10,7 +10,8 @@ import org.junit.jupiter.params.provider.ValueSource;
 import java.util.HashSet;
 import java.util.Set;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
+
 
 public class SetTest {
     private Set<Integer> numbers;
@@ -29,12 +30,11 @@ public class SetTest {
     void setSize_test_expect_equal_size() {
         // given
         // setUp()
+        int expect = 3;
 
         // when
-        int actual = numbers.size();
-
         // then
-        assertThat(actual).isEqualTo(3);
+        assertThat(numbers).hasSize(expect);
     }
 
     @ParameterizedTest()
@@ -45,7 +45,13 @@ public class SetTest {
     }
 
     @ParameterizedTest()
-    @CsvSource(value = {"1:true", "2:true", "3:true", "4:false", "5:false"}, delimiter = ':')
+    @CsvSource(value = {
+            "1:true",
+            "2:true",
+            "3:true",
+            "4:false",
+            "5:false"
+    }, delimiter = ':')
     @DisplayName("Set Collection 요구사항3: 입력 값에 따라 결과 값이 다른 경우에 대한 테스트도 가능하도록 구현")
     void equal_test_compare_csvSource(int input, boolean result) {
         assertThat(numbers.contains(input)).isEqualTo(result);

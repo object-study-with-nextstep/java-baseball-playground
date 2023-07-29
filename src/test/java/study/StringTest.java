@@ -25,10 +25,10 @@ public class StringTest {
         String[] actual = targetString.split(",");
 
         //then
-        assertThat(actual).contains("1");
-        assertThat(actual).contains("2");
-        assertThat(actual).containsExactly("1", "2");
-
+        assertThat(actual)
+                .contains("1")
+                .contains("2")
+                .containsExactly("1", "2");
     }
 
     @Test
@@ -41,9 +41,9 @@ public class StringTest {
         String[] actual = targetString.split(",");
 
         //then
-        assertThat(actual).contains("1");
-        assertThat(actual).containsExactly("1");
-
+        assertThat(actual)
+                .contains("1")
+                .containsExactly("1");
     }
 
     @Test
@@ -75,16 +75,14 @@ public class StringTest {
     @Test
     @DisplayName("String 요구사항3-2: String의 charAt() 메소드를 활용해 특정 위치의 문자를 가져올 때 위치 값을 벗어나면 StringIndexOutOfBoundsException이 발생하는 부분에 대한 학습 테스트를 구현한다.")
     void charAt_test_expect_throwing_StringIndexOutOfBoundsException() {
+        //given
+        String targetString = "abc";
 
-        assertThatThrownBy(() -> {
-            //given
-            String targetString = "abc";
-
-            //when
-            String actual = String.valueOf(targetString.charAt(5));
-        }).isInstanceOf(IndexOutOfBoundsException.class)
-
-                //then
+        // when
+        // then
+        assertThatThrownBy(() ->
+                String.valueOf(targetString.charAt(5)))
+                .isInstanceOf(IndexOutOfBoundsException.class)
                 .hasMessageContaining("String index out of range: 5");
     }
 }
