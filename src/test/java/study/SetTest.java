@@ -47,7 +47,7 @@ public class SetTest {
     @ValueSource(ints = {1, 2, 3})
     void contains_with_parametered(int expected) {
         // when / then
-        assertThat(numbers.contains(expected)).isTrue();
+        assertThat(numbers).contains(expected);
     }
 
     /**
