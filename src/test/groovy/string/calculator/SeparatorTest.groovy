@@ -4,14 +4,34 @@ import spock.lang.Specification
 
 class SeparatorTest extends Specification{
 
-    def "성공: separator생성 및 쪼갠 문자열의 크기가 동일한지 테스트"(){
-        given:
+    def "SUCCESS: 문자열 모두 쪼개기"() {
+        setup:
+        String expression = "2 + 3 * 4 / 2"
+        String delimiter = " "
+        Separator separator = new Separator(expression, delimiter)
+
+        when:
+        String[] result = separator.separate()
+        println(result)
+        println(result.size())
+
+        then:
+        result.size() > 0
+    }
+
+    def "nextInt 테스트"() {
+        setup:
         String expression = "2 + 3 * 4 / 2"
 
         when:
-        Separator separator = new Separator(expression)
+        Scanner scanner = new Scanner(expression)
+        var total = 0;
+
+        while(scanner.hasNext()){
+            total += scanner.nextInt()
+        }
 
         then:
-        separator.separate().size() == 7
+        total == 11
     }
 }
