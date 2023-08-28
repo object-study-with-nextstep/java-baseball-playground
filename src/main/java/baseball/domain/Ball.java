@@ -31,7 +31,7 @@ public class Ball {
             return STRIKE;
         }
 
-        if(ball.matchBallNo(ballNo)) {
+        if(this.matchBallNo(ball.ballNo)) {
             return BALL;
         }
 
