@@ -1,6 +1,5 @@
 package baseball.application;
 
-import baseball.domain.Ball;
 import baseball.domain.BallStatus;
 import baseball.domain.Balls;
 
