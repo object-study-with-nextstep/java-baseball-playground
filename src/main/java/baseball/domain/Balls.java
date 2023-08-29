@@ -16,7 +16,7 @@ public class Balls {
 
     private void validationBalls(List<Integer> balls) {
         Set<Integer> setBalls = new HashSet<>(balls);
-        if (setBalls.size() != MAX_BALL_POSITION) {
+        if (setBalls.size() != MAX_BALL_POSITION.number()) {
             throw new IllegalArgumentException(INVALID_LENGTH_BALLS.getExceptionMessage());
         }
     }

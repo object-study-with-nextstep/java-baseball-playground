@@ -3,7 +3,8 @@ package baseball.domain;
 import java.util.Objects;
 
 import static baseball.domain.BallStatus.*;
-import static baseball.domain.BaseBallErrors.*;
+import static baseball.domain.BaseBallErrors.OUT_OF_BOUNDARY_POSITION;
+import static baseball.domain.BaseBallErrors.OUT_OF_BOUNDARY_VALUE;
 import static baseball.domain.BusinessConstant.*;
 
 public class Ball {
@@ -18,20 +19,20 @@ public class Ball {
         this.ballNo = ballNo;
     }
 
-    public int getPosition() {
+    public int position() {
         return position;
     }
 
-    public int getBallNo() {
+    public int ballNo() {
         return ballNo;
     }
 
     public BallStatus play(Ball ball) {
-        if(this.equals(ball)) {
+        if (this.equals(ball)) {
             return STRIKE;
         }
 
-        if(this.matchBallNo(ball.ballNo)) {
+        if (this.matchBallNo(ball.ballNo)) {
             return BALL;
         }
 
@@ -56,13 +57,13 @@ public class Ball {
     }
 
     private void validationNumber(int ballNo) {
-        if (ballNo < MIN_BALL_VALUE || ballNo > MAX_BALL_VALUE) {
+        if (ballNo < MIN_BALL_VALUE.number() || ballNo > MAX_BALL_VALUE.number()) {
             throw new IllegalArgumentException(OUT_OF_BOUNDARY_VALUE.getExceptionMessage());
         }
     }
 
     private void validationPosition(int position) {
-        if (position < MIN_BALL_POSITION || position > MAX_BALL_POSITION) {
+        if (position < MIN_BALL_POSITION.number() || position > MAX_BALL_POSITION.number()) {
             throw new IllegalArgumentException(OUT_OF_BOUNDARY_POSITION.getExceptionMessage());
         }
     }

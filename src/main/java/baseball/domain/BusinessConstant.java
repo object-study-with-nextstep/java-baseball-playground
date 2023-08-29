@@ -1,8 +1,19 @@
 package baseball.domain;
 
-public class BusinessConstant {
-    public static final int MIN_BALL_VALUE = 1;
-    public static final int MAX_BALL_VALUE = 9;
-    public static final int MIN_BALL_POSITION = 1;
-    public static final int MAX_BALL_POSITION = 3;
+public enum BusinessConstant {
+    MIN_BALL_VALUE(1),
+    MAX_BALL_VALUE(9),
+    MIN_BALL_POSITION(1),
+    MAX_BALL_POSITION(3),
+    ;
+
+    private final int number;
+
+    BusinessConstant(int number) {
+        this.number = number;
+    }
+
+    public int number() {
+        return number;
+    }
 }

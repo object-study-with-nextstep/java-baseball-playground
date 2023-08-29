@@ -7,6 +7,9 @@ public class Disassembler {
     private static final int EVEN_NUMBER = 0;
     private static final int DIVIDER = 2;
 
+    private Disassembler() {
+    }
+
     public static void disassemble(Queue<Number> numbers, Queue<Expression> expressions, String mathExpression) {
         String[] integersAndExpressions = mathExpression.split(" ");
 

@@ -9,7 +9,7 @@ import string.calculator.domain.Disassembler;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-public class CalculatorTest {
+class CalculatorTest {
 
     @DisplayName("[성공] 기본 케이스 : 2 + 3 * 4 / 2 = 10")
     @Test
