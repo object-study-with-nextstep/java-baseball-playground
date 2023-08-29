@@ -22,10 +22,13 @@ public class BaseBallGame {
 
     public Map<BallStatus, Integer> playGame(Balls balls) {
         Map<BallStatus, Integer> gameResult = new TreeMap<>();
-        for (Ball ball : balls.getBalls()) {
-            BallStatus status = answerBalls.play(ball);
-            gameResult.put(status, gameResult.getOrDefault(status, RESULT_DEFAULT_VALUE) + 1);
-        }
+
+        balls.getBalls().stream()
+                .map(answerBalls::play)
+                .forEach(status -> gameResult.put(
+                        status,
+                        gameResult.getOrDefault(status, RESULT_DEFAULT_VALUE) + 1
+                ));
 
         return gameResult;
     }
