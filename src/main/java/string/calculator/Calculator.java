@@ -8,7 +8,7 @@ public class Calculator {
     Calculator(Separator separator){
         this.separator = separator;
     }
-    public int calculate(){
+    public int calculate() throws Exception {
         String[] separatedString = separator.separate();
 
         return calculate(separatedString);
@@ -23,7 +23,6 @@ public class Calculator {
             int number = 0;
 
             char splitChar = string.charAt(0);
-            // TODO: 숫자, 숫자가 오는경우, 연산자 연산자 가 오는경우, 첫 value가 연산자인 경우 체크
 
             if (Character.isDigit(splitChar) && index == 0) {
                 number = Character.getNumericValue(splitChar);
