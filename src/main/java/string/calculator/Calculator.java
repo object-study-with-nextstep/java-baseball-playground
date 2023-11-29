@@ -8,6 +8,8 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class Calculator {
+    private Calculator() {
+    }
 
     public static int calculate(String mathExpression) {
         Queue<Number> numbers = new LinkedList<>();
@@ -47,6 +49,8 @@ public class Calculator {
             case '/':
                 calculateResult = preNumber.getNumber() / postNumber.getNumber();
                 break;
+            default:
+                throw new IllegalStateException("Unexpected value: " + expression.getExpression());
         }
 
         return calculateResult;

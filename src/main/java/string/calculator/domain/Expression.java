@@ -3,7 +3,7 @@ package string.calculator.domain;
 import static string.calculator.domain.CalculatorError.*;
 
 public class Expression {
-    private char expression;
+    private final char expression;
 
     public Expression(String expressionString) {
         validateExpressionString(expressionString);
